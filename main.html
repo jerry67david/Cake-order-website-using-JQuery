@@ -1,0 +1,150 @@
+exp 7 cake
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Order</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/elevated-view-breads-utensils-egg-spices-forming-frame-black-background_23-2147955228.jpg?size=626&ext=jpg&ga=GA1.1.1353242698.1692784627&semt=ais://img.freepik.com/premium-vector/seamless-pattern-crafted-sweets-doodle-sketch-brohttps://img.freepik.com/premium-vector/seamless-pattern-crafted-sweets-doodle-sketch-brown-illustration_363400-6.jpg?size=626&ext=jpg&ga=GA1.2.1353242698.1692784627&semt=aiswn-illustration_363400-6.jpg?size=626&ext=jpg&ga=GA1.2.1353242698.1692784627&semt=ais');
+            background-size: cover;
+        }
+        header {
+            background-color: red;
+            text-align: center;
+            padding: 10px 0;
+        }
+        h1 {
+            margin: 0;
+            color: white;
+        }
+        .cake-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            background-color: bisque;
+            border-radius: 8px;
+        
+        }
+        .cake {
+            text-align: center;
+        }
+        .cake img {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .cake label {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+            color: blue;
+        }
+        form {
+            text-align: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        form h2 {
+            color: whitesmoke;
+        }
+        .form-item {
+            margin: 10px 0;
+        }
+        .total-price {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .total-price-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        #total-cost{
+            color: blue;
+            background-color: white;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Order Cake</h1>
+    </header>
+    <div class="cake-container">
+        <div class="cake">
+            <img src="https://mrbrownbakery.com/image/images/bFymWWBtT2yfbgEOONRdg4zMOji4ru30A970EuVR.png?p=medium" alt="Brown Cake">
+            <label for="quantity-brown">Brown Cake - Rs 200</label>
+        </div>
+        <div class="cake">
+            <img src="https://iambaker.net/wp-content/uploads/2013/12/rainbowcake71.jpg" alt="Color Cake">
+            <label for="quantity-color">Color Cake - Rs 300</label>
+        </div>
+        <div class="cake">
+            <img src="https://floursandfrostings.com/wp-content/uploads/2019/02/IMG_20190222_153913_465.jpg" alt="Milky Cake">
+            <label for="quantity-milky">Milky Cake - Rs 250</label>
+        </div>
+        <div class="cake">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Black_Forest_gateau.jpg/500px-Black_Forest_gateau.jpg" alt="Black Forest Cake">
+            <label for="quantity-black-forest">Black Forest Cake - Rs 350</label>
+        </div>
+    </div>
+    <form>
+        <h2>Order Cake</h2>
+        <div class="form-item">
+            <label for="quantity-brown" style="font-size: 14px; color: white;">Brown Cake (quantity)</label><br>
+            <input type="number" id="quantity-brown" class="form-item" min="0"><br>
+        </div>
+        <div class="form-item">
+            <label for="quantity-color" style="font-size: 14px; color: white;">Color Cake (quantity)</label><br>
+            <input type="number" id="quantity-color" class="form-item" min="0"><br>
+        </div>
+        <div class="form-item">
+            <label for = "quantity-milky" style="font-size: 14px; color: white;">Milky Cake (quantity)</label><br>
+            <input type="number" id="quantity-milky" class="form-item" min="0"><br>
+        </div>
+        <div class="form-item">
+            <label for="quantity-black-forest" style="font-size: 14px; color: white;">Black Forest Cake (quantity)</label><br>
+            <input type="number" id="quantity-black-forest" class="form-item" min="0"><br>
+        </div>
+    </form>
+    <hr>
+    <div class="total-price">
+        <button type="button" class="total-price-btn" id="calculate-total">Purchase Order Bill!!</button>
+        <span id="total-cost">Total Cost:</span>
+    </div>
+    <script>
+        // Function to calculate the total price
+        function calculateTotal() {
+            const brownPrice = 200;
+            const colorPrice = 300;
+            const milkyPrice = 250;
+            const blackForestPrice = 350;
+            const quantityBrown = parseInt($('#quantity-brown').val()) || 0;
+            const quantityColor = parseInt($('#quantity-color').val()) || 0;
+            const quantityMilky = parseInt($('#quantity-milky').val()) || 0;
+            const quantityBlackForest = parseInt($('#quantity-black-forest').val()) || 0;
+            const totalCost = (quantityBrown * brownPrice) + (quantityColor * colorPrice) + (quantityMilky * milkyPrice) + (quantityBlackForest * blackForestPrice);
+            $('#total-cost').text('Total Price: Rs ' + totalCost);
+        }
+
+        // Add an event listener to the "Purchase Order Bill!!" button to calculate and display the total
+        $('#calculate-total').on('click', calculateTotal);
+    </script>
+</body>
+
+</html>
